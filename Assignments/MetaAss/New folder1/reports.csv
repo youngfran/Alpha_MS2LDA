@@ -1,2 +1,0 @@
-kmer_length,n_sequences,n_long_sequences,n_short_sequences,n_bases,n_N,n_non_N,min_length,max_length,avg_length,N50,exp_cov,outdir
-67,622,93,529,6976838,13835,6963003,133,1621808,11216.7813505,321134,958,/shared2/MScBioinf/fran/MATutorial/velveth_k67

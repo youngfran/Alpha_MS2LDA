@@ -1,9 +1,0 @@
-public int count7(int n) {
-  int c7 =0;
-  if (n%10 ==7)
-      c7 = 1;
-  if (n == 0)
-        return c7;
-  n  =  c7 + count7(n/10 );
-  return c7;
-} 
