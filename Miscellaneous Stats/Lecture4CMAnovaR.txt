@@ -1,0 +1,53 @@
+#Download the data and save it to your working directoy
+getwd()
+
+DATA <- read.table('Statsdata.txt', header = TRUE) #This loads the data into R
+attach(DATA)
+
+
+##Question1 - is there a linear relationship between tick count and weight?
+
+## Look at a histogram of weight
+hist(DATA$weight)
+
+## Look at the relationship between weight and tick count
+plot(tick, weight,pch=19)
+plot(tick, weight,pch=19,col="red") #Change colour of points
+plot(tick, weight,pch=15,col="red") #Change shape of points
+plot(tick, weight,pch=15,col="red",cex.lab=1.5) #Change size of labels
+
+##Do the linear regression
+LM1<-lm(weight~tick, data=DATA)
+summary(LM1)
+par(mfrow=c(2,2))
+plot(LM1)
+#Look at the first plot to check the last assumption!
+
+
+##We can add the best fit line to the plot
+plot(tick, weight,pch=15,col="red",cex.lab=1.5) #Change size of labels
+abline(lm(weight~tick, data=DATA),col="blue")
+abline(lm(weight~tick, data=DATA),col="blue",lwd=3) # Change the width of the line
+
+
+## Question 2 - is there a relationship between weight and breed.
+
+## Plot the data
+boxplot(weight~breed)
+boxplot(weight~breed, xlab="Breed", ylab="Weight") #Add axis labels
+boxplot(weight~breed, xlab="Breed", ylab="Weight",col="red") #Change colour of boxplots
+
+## Do the Anova
+aov1<-aov(weight~breed, data=DATA)
+summary(aov1)
+
+## We can do follow up analysis to see specifically where the difference lie. This gives a 2 by 2 
+## Matrix of p-values.  What do you think these p-values are testing?
+pairwise.t.test(weight, breed, p.adj = "bonf")
+
+
+
+
+
+
+

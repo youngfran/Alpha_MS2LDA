@@ -1,0 +1,530 @@
+---
+title: "Assignment"
+author: "2226768Y"
+date: "19 March 2016"
+output: pdf_document
+---
+
+```{r echo=FALSE,include=FALSE}
+
+#setwd("C:/Users/Fran/Documents/Bioinformatics/SystemsBio/assignment2/data")
+setwd ("C:\\Users\\Fran\\Documents\\Bioinformatics\\SystemsBio\\assingnment2\\data")
+library(affy)
+library(RColorBrewer)
+library(dplyr)
+library(plyr)
+library(ggplot2)
+library(gplots)
+library(limma)
+library(randomForest)
+library(knitr)
+
+# set colour palette
+cols <- brewer.pal(8, "Set1")
+
+```
+#  Introduction  
+Using microarray data to find link between gene exression and phenotype is .
+Finding a key set of genes where changes in expression indicate a the presance or absense of a condition. such as disease state or drug response.  
+Chronic Myloid Leukemia is a disease that is sucsessfully treated by the drug . Unfortunately some patients do not respond and others become resitant to the dtug after a long period of sucessful treatment. Being able to predict the non-responders early gives the clinicianc the oppotunity to try differant options early .  
+In this assignment I attempt two supervised learning classifiers, logistic regression and random forest, to produce models that can predict response from micro array data. 
+  
+# The Data.  
+The dataset GSE14671 was downloaded from GEO at the NCBI websiteis. It consists 59  samples of microarray data each  of 54675 probes, the metadata includes information on drug response.  
+```{r , message=FALSE, warning=FALSE}
+setwd ("C:\\Users\\Fran\\Documents\\Bioinformatics\\SystemsBio\\assingnment2\\data")
+data <- ReadAffy()
+boxplot(data, main="Raw Data", col=brewer.pal(8,"Set3"))
+```
+
+####  Function to plot boxplots of expression sets using ggplot
+
+```{r}
+#dat is an eset
+ggboxplot <-function ( dat, title){
+  library(reshape2)
+  plotData <- as.data.frame(t(exprs(dat)))
+  plotData$sample <- row.names(plotData)
+  plotData.m <- melt(plotData, id.vars = "sample")
+
+
+  g<-  ggplot(plotData.m, aes(x=sample,y=value, fill= sample )) +
+  geom_boxplot() +guides(fill=FALSE)+ ggtitle(title)
+  
+return(g)
+} 
+```
+Normalise the data using the RMA routine in Affy.
+
+```{r,warning=FALSE,message=FALSE}
+eset <- rma(data)
+ggboxplot (eset, " Data after RMA Normalisation")
+```
+
+Read in the phenotype data and extract columns needed and merge eith the expression set.
+
+```{r}
+phenoTypes <- read.table("E-GEOD-14671.sdrf.txt",header = TRUE, sep= "\t",stringsAsFactors = F,row.names = 1,comment.char = '!')
+
+pheno <- phenoTypes
+# change sample names to same as data
+sampleN <- paste0(t(as.data.frame(strsplit(rownames(pheno)," ")))[,1],".CEL")
+```
+Extract columns needed response and training set
+```{r}
+response <- factor(pheno$Comment.Sample_source_name., labels= c("NR","R"))
+responseAll <- response# to try to get aroud knitting problem later on
+tset<- data.frame(strsplit(pheno$Comment.Sample_description., " "),stringsAsFactors = FALSE)
+tset <- paste(tset[1,],tset[2,],tset[3,] ,sep ="_")
+trainingSet <- factor(tset, labels = c( "TS_R","TS_NR" ,"VS_NR","VS_R"))
+pheno<- data.frame(response,trainingSet,row.names = sampleN) 
+```
+merge with pheno data fom eset so in correct order
+```{r}
+pd<- pData(eset)
+pheno <- merge(pd, pheno, by=0)
+rownames(pheno) <- pheno[,'Row.names']
+
+pheno.metadata <- data.frame(labelDescription=colnames(pheno) )
+pheno.annotatedDF <- new("AnnotatedDataFrame",data=pheno, varMetadata=pheno.metadata)
+phenoData(eset) <- pheno.annotatedDF
+```
+Re-order the eset so samples grouped by response.  
+```{r}
+cindex <-rownames( pData(eset)[order(pData(eset)$response),,drop =FALSE])
+eset <- eset[,cindex]
+```
+# Data Exploration 
+Limma was used to calculate the differential expression.  
+create design array for all data where CML subset ==CP.  
+
+```{r,warning=FALSE,message=FALSE}
+
+design <- model.matrix(~0 + eset@phenoData$response )
+colnames(design) <- c("R","NR")
+contrast.matrix <- makeContrasts(R-NR,levels=design)
+
+fit <- lmFit(eset,design)
+fit2 <- contrasts.fit(fit, contrast.matrix)
+fit2 <- eBayes(fit2)
+
+res = decideTests(fit2,adjust.method = "none",p.value= .05 )
+vennDiagram(res, sub= "DE genes, with no multi-test correction")
+```
+  
+###  Volcano plot of results  
+The red genes have a p-value of less than 0.05 and a log2(fold-change) of greater than 0.5  
+```{R}
+
+results = topTable(fit2,number = Inf)
+results = mutate(results, sig=ifelse((results$P.Value<0.05 & abs(results$logFC) > 0.5), "p<0.05", "Not Sig"))
+p = ggplot(results, aes(results$logFC, -log10(results$P.Value))) +
+  geom_point(aes(col=results$sig)) +
+  scale_color_manual(values=c( "black","red"))
+p
+```
+
+The p-values are high so if a multitest correction applied no genes pass the test.
+Only 51 genes have a fold change of greater than 2 and p value of less than 0.05.
+'sum(results$sig == "p<0.05")' genes have a log2fold change = 0.5, (actual fold change of 1.4 and p<0.05).
+
+
+# Feature Selection
+## Differentially expressed genes from Limma
+
+```{r}
+tt <- topTable( fit2, adjust="none",n=Inf, sort.by="none" )
+all.results.sorted <- tt[ order(abs(tt$P.Value)), ]
+
+q.threshold <- 0.05
+fc.threshold <- 0.5
+LIMMA_up.all <- rownames( subset( all.results.sorted,
+adj.P.Val<q.threshold & logFC>fc.threshold ) )
+LIMMA_down.all <- rownames( subset( all.results.sorted,
+adj.P.Val<q.threshold & logFC< (0-fc.threshold ) ))
+Limma.all <- c(LIMMA_down.all,LIMMA_up.all)
+ 
+
+par( mfrow=c(1,2) )
+plot( exprs(eset)[LIMMA_up.all[1],],pch=16, col=as.factor(pData(eset)$response))
+plot( exprs(eset)[LIMMA_down.all[1],],pch=16, col=as.factor(pData(eset)$response))
+
+
+n.genes <- 25
+Limma_up.25 <-rownames (subset(all.results.sorted, logFC>1 ))
+Limma_down.25 <- rownames(subset(all.results.sorted, logFC< -1 )[1:n.genes,])
+Limma50<- c(Limma_up.25,Limma_down.25)
+
+plot( exprs(eset)[Limma_up.25[20],],pch=16, col=as.factor(pData(eset)$response))
+plot( exprs(eset)[Limma_down.25[20],],pch=16, col=as.factor(pData(eset)$response))
+matplot (t(exprs(eset)[Limma_up.25[1:5],]),type = "l")
+matplot (t(exprs(eset)[Limma_down.25[1:5],]),type = "l")
+matplot (t(exprs(eset)[LIMMA_up.all[1:5],]),type = "l")
+matplot (t(exprs(eset)[LIMMA_down.all[1:5],]),type = "l")
+
+
+```
+The mean fold change.
+All up regulated genes is:     `r mean(tt[LIMMA_up.all,]$logFC)`    
+Most significant up reg genes: `r mean(tt[Limma_up.25,]$logFC)`
+All down regulated genes:       `r mean(tt[LIMMA.all,]$logFC)`  
+Most significant down-reg genes:`r mean(tt[Limmer_down.25,]$logFC) `  
+
+### Heat map of most significant genes.  
+
+```{r, warning=FALSE}
+labels = paste0(pData(eset)$sample,"_",pData(eset)$response)
+column.classification <- rep.int( "grey", ncol(eset))
+column.classification[ pData(eset)$response=="R" ]<- "orange"
+
+
+heatmap.2(exprs(eset)[Limma50,],scale="row",trace="none",density.info="none",col=greenred,labRow=NA,ColSideColors=column.classification,key=T)
+
+heatmap.2(exprs(eset)[Limma.all,],scale="row",trace="none",density.info="none",
+col=greenred,labRow=NA,ColSideColors=column.classification,key=T)
+
+```
+### Mean Difference in Expression
+Using the difference between mean expression values for the responders and non-responders.
+This takes no account in the variance so that the DE of many genes may not be statistically significant.
+```{r}
+expData <- exprs(eset)
+responder <-  (eset@phenoData$response == "R")
+nonResponder <- (eset@phenoData$response != "R")
+ # avN <-  mean(exData[1,normal])
+  #diff <- abs (avD-avN)
+  diff  <- vector(, length = length(expData[,1]))
+  varG <- vector(, nrow(expData))
+  for (i in 1: length(expData[,1])){
+    avNR<- mean(expData[i,nonResponder])
+    avR <-  mean(expData[i,responder])
+    varG[i] <- var(expData[i,])
+    diff[i] <- abs (avNR-avR)
+  }
+  
+rnames <- rownames(expData)
+diffData <- data.frame (diff,row.names = rnames)
+
+topDiff <-head (diffData[order(-diffData$diff), , drop = FALSE],n=50)
+topDiff1000 <-head (diffData[order(-diffData$diff), , drop = FALSE],n=1000)
+topDiff <- rownames (topDiff)
+topDiff1000 <- rownames (topDiff1000)
+
+matplot(t(expData [topDiff[1:5],]), type = "l")
+
+heatmap.2(expData[topDiff,],scale="row",trace="none",density.info="none",col=greenred,
+ labCol = labels,labRow=NA,ColSideColors=column.classification,key=T)
+
+```
+
+
+### Correlation 
+Choosing the genes that are most correlated to the respone (either positive or negative).  
+```{r}
+
+resp <- as.numeric(pData(eset)$response)
+expData <- exprs(eset)
+
+c<-  cor (t(expData),resp)
+head (c)
+#m[order(m[,1]),]
+cc<- c[order(-abs(c[,1])),  ]
+c50 <- cc[1:50]
+c1000 <- cc[1:1000]
+corrGenes <- names(c50)
+corr1000Genes <- names(c1000)
+heatmap.2(expData[corrGenes,],
+          scale="row",trace="none",density.info="none",col=greenred,Colv = FALSE,
+          labCol = labels,labRow=NA,ColSideColors=column.classification,key=T)
+
+```
+### Comparison between differant genesets  
+A= top average differce, B= Differance from Limma, C= Genes most correlated to reponse.
+
+```{r}
+venn(list(topDiff,Limma.all,corrGenes))
+```
+
+## Training and Test Data  
+Logistical regression needs training data and withheld test data to validate the results, a Forest 
+The data was split into training set and a test set in a proportion of 7:3 resulting in 
+41 samples in the training set and 18 in the test set. 
+
+```{r}
+d <- t(exprs(eset))
+set.seed(20)
+trainSet<-sample_frac(as.data.frame(d), 0.7)
+sid<-(rownames(trainSet)) # because rownames() returns character
+testSet<- as.data.frame(d[!(rownames(d) %in% sid),])
+trainResponse <- pData(eset)[rownames(trainSet),]$response
+testResponse <- pData(eset)[rownames(testSet),]$response
+colnames(testSet) <- paste0("X",colnames(testSet))
+allData <- data.frame(t(expData))
+```
+
+We now have 3 sets of gene, limma.geneset,corrGeneset and topDiff with a subset of the top 50 for use with logistic regression
+# Modeling  
+
+## Logistic Regression Modeling
+
+
+### 1.For correlated genes  
+
+```{r, warning=FALSE,message=FALSE}
+genelist <- corrGenes
+response <- trainResponse
+d = data.frame(trainSet[,genelist])
+
+
+vars = paste0('response ~ X', paste(genelist, collapse=' + X'))
+LRcorr.model = glm(as.formula(vars), data=d, family=binomial(link='logit'))
+
+reality <- pData(eset)$response
+Reality_pred <- data.frame(reality, row.names = colnames(exprs(eset)))
+corrPredA <- predict(LRcorr.model,allData , type= "response")
+
+corrPredAll <- factor( (corrPredA > 0.5),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,corrPredAll, by =0, all.x=TRUE)
+Reality_pred$corrA <- RPtemp$y
+
+corrPredT <- predict(LRcorr.model,testSet , type= "response")
+corrPredTest <- factor( (corrPredT > 0.5),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,corrPredTest, by =0, all.x=TRUE)
+Reality_pred$corrT <- RPtemp$y
+
+```
+
+### 2.For Limma genes.  
+```{r, warning=FALSE,message=FALSE}
+genelist <- Limma50
+d = data.frame(trainSet[,genelist])
+
+
+vars = paste0('response ~ X', paste(genelist, collapse=' + X'))
+LRLimma.model = glm(as.formula(vars), data=d, family=binomial(link='logit'))
+
+pred <-   predict(LRLimma.model,allData, type= "response")
+pred <- factor( (pred > 0.5),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,pred, by =0, all.x=TRUE)
+Reality_pred$LGLimmaA <-RPtemp$y
+
+pred <-   predict(LRLimma.model,testSet, type= "response")
+pred <- factor( (pred > 0.5),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,pred, by =0, all.x=TRUE)
+Reality_pred$LGLimmaT <-RPtemp$y
+
+```
+### 3.For MeanDiff genes.   
+```{r, warning=FALSE,message=FALSE}
+genelist <- topDiff
+d = data.frame(trainSet[,genelist])
+
+
+vars = paste0('response ~ X', paste(genelist, collapse=' + X'))
+LRdiff.model = glm(as.formula(vars), data=d, family=binomial(link='logit'))
+
+pred <-   predict(LRdiff.model, allData, type= "response")
+pred <- factor( (pred > 0.5),levels = c(FALSE,TRUE),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,pred, by =0, all.x=TRUE)
+Reality_pred$meandiffA <-RPtemp$y
+
+pred <-   predict(LRdiff.model, testSet, type= "response")
+pred <- factor( (pred > 0.5),levels = c(FALSE,TRUE),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,pred, by =0, all.x=TRUE)
+Reality_pred$meandiffT <-RPtemp$y
+
+```
+
+### 4.Refine the model by using only the most important genes in new model.
+```{r,warning=FALSE}
+genelist <- corrGenes
+response <- trainResponse
+d = data.frame(trainSet[,genelist])
+
+anovaModel <-anova(LRcorr.model,test="Chisq")
+head(anovaModel)
+
+# pick the significant genes
+glmGenes <- row.names(anovaModel[anovaModel$`Pr(>Chi)`<.05, ])
+glmGenes <- glmGenes [2:5]
+
+newVars <-  paste0('response ~ ', paste(glmGenes, collapse=' +'))
+newModel = glm(as.formula(newVars), data=d, family=binomial(link='logit'))
+summary(newModel)
+ 
+anovaModel <-anova(newModel,test="Chisq")
+head(anovaModel)
+
+newPred <- predict(newModel, allData, type= "response")
+newPred <-factor( (newPred > 0.5),labels = c("NR","R"))
+Reality_pred$LGcorrImpA <- newPred
+
+pred <-   predict(newModel, testSet, type= "response")
+pred <- factor( (pred > 0.5),levels = c(FALSE,TRUE),labels = c("NR","R"))
+RPtemp <- merge(Reality_pred,pred, by =0, all.x=TRUE)
+Reality_pred$LGcorrImpT <-RPtemp$y
+```
+
+
+### Functions to calculate the accuracy,FDR,precision and recall from the confusion matrix.  
+```{r}
+accFDR <- function (TP,FP,TN,FN){
+    Acc <- (TN+TP)/(TP+TN+FP+FN)
+    Pre <- TP/(TP+FP)
+    Recall <- TP/(TP+FN)
+    FDR <- FP/(FP+TN)
+    resList <- list(c(Acc,FDR,Pre,Recall,TP,FP,TN,FN))
+    return (resList)
+} 
+```
+### Function Calculate Accuracy,FDR, recall and precision from TP, FP, FN, TN for each model
+
+``` {r}
+confuse <- function(rp) {
+  res <- list("")
+  resultList <- list ("")
+  predNames <- colnames(rp)
+  for (x in 1:(ncol(rp)-1)){
+      predName <- predNames[x+1] 
+      realPred <- rp[, c("reality" ,predName)]
+     # final[complete.cases(final),]
+      colnames (realPred) <- c("reality","prediction")
+      realPred <-realPred[complete.cases(realPred),]
+      TP<-FP<-FN<-TN <-0
+      for (i in 1:nrow(realPred)){
+        if (realPred$reality[i]== "NR" && realPred$prediction[i]=="NR")
+          TP =TP +1
+        else if (realPred$reality[i]== "NR" && realPred$prediction[i]== "R")
+          FN = FN +1
+        else if (realPred$reality[i]== "R" && realPred$prediction[i]== "NR")
+          FP = FP +1
+        else if(realPred$reality[i]== "R" && realPred$prediction[i]=="R")
+          TN = TN +1
+      } 
+    
+    resAcc <- accFDR(TP,FP,TN,FN)
+    resultList <- append(resultList,resAcc)
+  }
+   return(resultList)
+}
+
+```
+##Randomn Forest
+
+### 1.Correlated geneset  
+#### top 1000 correlated geneset
+
+```{r}
+response <- responseAll
+subsetGenes <- corr1000Genes
+trainSubset <- t(expData[subsetGenes,])
+
+fitRF.corr <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+confusion <- fitRF.corr$confusion
+RFresults<- list("")
+RFresults <-append(RFresults, accFDR (confusion[1,1],confusion[2,1],confusion[2,2],confusion[1,2]))
+```
+#### Top 50 correlated geneset
+
+```{r}
+subsetGenes <- corrGenes
+trainSubset <- t(expData[subsetGenes,])
+fitRF.corr <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+confusion <- fitRF.corr$confusion
+RFresults <-append(RFresults, accFDR(confusion[1,1],confusion[2,1], confusion[2,2], confusion[1,2]))
+```
+#### Top 6 correlated genes
+
+```{r}
+subsetGenes <- corrGenes[1:6]
+trainSubset <- t(expData[subsetGenes,])
+fitRF.corr <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+confusion <- fitRF.corr$confusion
+RFresults <-append(RFresults, accFDR (confusion[1,1], confusion[2,1], confusion[2,2], confusion[1,2]))
+```
+###  2.Limma Geneset
+#### Limma all geneset (567 genes)
+
+```{r}
+
+subsetGenes <- Limma.all
+trainSubset <- t(expData[subsetGenes,])
+
+# Fitting model
+fitRF.limma <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+fitRF.limma$confusion
+confusion <- fitRF.limma$confusion
+RFresults <-append(RFresults, accFDR (confusion[1,1], confusion[2,1], confusion[2,2], confusion[1,2]))
+```
+#### Limma 50 geneset
+
+```{r}
+subsetGenes <- Limma50
+trainSubset <- t(expData[subsetGenes,])
+
+# Fitting model
+fitRF.limma <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+
+confusion <- fitRF.limma$confusion
+RFresults <-append(RFresults, accFDR (confusion[1,1], confusion[2,1], confusion[2,2], confusion[1,2]))
+
+```
+### 3.Mean Difference Geneset
+#### top 1000 geneset
+
+```{r}
+subsetGenes <- topDiff1000 
+trainSubset <- t(expData[subsetGenes,])
+fitRF.meanD <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+confusion <- fitRF.meanD$confusion
+RFresults <-append(RFresults, accFDR (confusion[1,1], confusion[2,1], confusion[2,2], confusion[1,2]))
+```
+####  Top 5 of mean differance geneset
+
+```{r}
+subsetGenes <- topDiff[1:5] 
+trainSubset <- t(expData[subsetGenes,])
+fitRF.meanD <- randomForest(x= trainSubset, y=response ,importance=TRUE ,ntree=5001, proximity=TRUE)
+confusion <- fitRF.meanD$confusion
+RFresults <-append(RFresults, accFDR (confusion[1,1], confusion[2,1], confusion[2,2], confusion[1,2]))
+
+```
+# Results
+
+
+```{r }
+
+
+LGResults <- confuse (Reality_pred)
+resNames <- colnames(Reality_pred)
+LGtable <- data.frame(LGResults[[2]])  
+for (i in 3:(length(LGResults)))
+   LGtable <- cbind(LGtable,LGResults[[i]])
+rownames(LGtable) <- c(  "Accuracy","FDR", "Precision", "Recall","TP","FP","TN","FN"  )
+colnames(LGtable) <- resNames[2:length(LGtable)]
+LGtable <- t(LGtable)
+kable (LGtable, digits = 2)
+#kable (as.data.frame(RFresults),digits = 2)
+str(RFresults)
+
+```
+
+#  Discussion
+
+
+### References  
+[1] Shannon K. McWeeney, Lucy C. Pemberton, Marc M. Loriaux, Kristina
+Vartanian, Stephanie G. Willis, Gregory Yochum, Beth Wilmot, Yaron Tur-
+paz, Raji Pillai, Brian J. Druker, Jennifer L. Snead, Mary MacPartlin,
+Stephen G. O'Brien, Junia V. Melo, Thoralf Lange, Christina A. Harring-
+ton, and Michael W. N. Deininger. A gene expression signature of cd34+
+cells to predict major cytogenetic response in chronic-phase chronic myeloid
+leukemia patients treated with imatinib. Blood, 115(2):315{325, 2010.  
+
+###Predictions for LG modeling
+```{r}
+kable(Reality_pred)
+```
+
+
+

@@ -1,0 +1,14 @@
+Taxon	Healthy_Child	Crohns_Child
+k__Archaea; p__Euryarchaeota	0.00842312530766	0.000348553502963
+k__Bacteria; p__	2.73478094405e-05	0.0
+k__Bacteria; p__Actinobacteria	0.195345402833	0.0982572324852
+k__Bacteria; p__Aquificae	0.0	6.97107005925e-05
+k__Bacteria; p__Bacteroidetes	0.0240387244982	0.0428720808644
+k__Bacteria; p__Cyanobacteria	0.000191434666083	0.0
+k__Bacteria; p__Firmicutes	0.715965651151	0.756883931684
+k__Bacteria; p__Fusobacteria	5.46956188809e-05	0.00156849076333
+k__Bacteria; p__Proteobacteria	0.0150959908111	0.0914604391774
+k__Bacteria; p__Synergistetes	2.73478094405e-05	0.000139421401185
+k__Bacteria; p__TM7	0.0	3.48553502963e-05
+k__Bacteria; p__Tenericutes	0.000464912760488	0.000104566050889
+k__Bacteria; p__Verrucomicrobia	0.0403653667341	0.00826071802022
