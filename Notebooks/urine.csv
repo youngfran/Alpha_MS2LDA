@@ -1,0 +1,177 @@
+Urine37,Frag/,m/z,EF,Struct. ID /
+0,"Frag,","85.0282,","C4H5O2,",Carnitine related Mass2Motif ? acylcarnitines are prevalent
+,"Frag,","60.0810,","C3H10N,",
+,Frag,57.0336,C3H5O,
+189,"Frag,","84.0807,","C5H10N,",1
+,"Frag,","56.0498,","C3H6N,",
+,"Frag,","67.0546,","C5H7,",
+,Frag,130.0856,C6H12NO2,
+169,"Frag,","70.0651,","C4H8N,",Proline (and arginine) related Mass2Motif 
+,Frag,116.0711,C5H10NO2,
+54,"Frag,","91.0541,","C7H7,","Alkyl aromatic substructure ? indicative for aromatic ring with 2-carbon alkyl chain attached, i.e., phenylethene fragment"
+,"Frag,","79.0541,","C6H7,",
+,"Frag,","67.0546,","C5H7,",
+,"Frag,","105.0702,","C8H9,",
+,"Frag,","81.0700,","C6H9,",
+,"Frag,","93.0699,","C7H9,",
+,"Frag,","53.0388,","C4H5,",
+,Frag,55.0547,C4H7,
+218,"Frag,","58.0655,","C3H8N,",1
+,Frag,59.0735,C3H9N,
+33,Loss,18.0083,H2O,Water loss ? indicative for free hydroxyl group in metabolite (could be part of COOH group)
+50,Frag,86.0601,C4H8NO,Aminobutyric acid related Mass2Motif
+122,"Frag,","84.0442,","C4H6NO,",Pyroglutamate (pyroglutamic acid) or glutamine related Mass2Motif (both fragmentation spectra in MzCloud)
+,"Frag,","56.0498,","C3H6N, C5H8NO3",
+,Frag,130.0505,,
+186,Loss,17.0254,NH3,Amine loss ? indicative for free NH2 group in metabolite
+167,"Loss,","59.0736,","C3H9N,","Mass2Motif related to trimethylamine with C2H4O (oxygen two carbons away) attached, as in choline (MzCloud)"
+,Frag,60.0811,C3H10N,
+270,"Frag,","84.0442,","C4H6NO,",Glutamine related Mass2Motif
+,"Frag,","130.0505,","C5H8NO3,",
+,"Frag,","56.0498,","C3H6N,",
+,Frag,"129.0658,","C5H9N2O2,",
+,Frag,147.0759,C5H11N2O3,
+231,"Frag,","110.0717,","C5H8N3,",Histidine related Mass2Motif
+,"Frag,","156.0767,","C6H10N3O2,",
+,Frag,83.0603,"C4H7N2,",
+,"Frag,","93.0450,","C5H5N2,",
+,"Frag,","95.0608,","C5H7N2,",
+,Frag,56.0497,C3H6N,
+79,"Frag,","83.0604,","C4H7N2,","Mass2Motif related to Imidazole group linked to a carboxylgroup through one CH2 group, i.e., like in imidazole acetic acid"
+,"Frag,","129.0658,","C5H9N2O2,",
+,Frag,56.0498,C3H6N,
+173,"Frag,","96.0682,","C5H8N2,",Methylimidazole related Mass2Motif
+,"Frag,","125.0708,","C6H9N2O,",
+,"Frag,","95.0607,","C5H7N2,",
+,Frag,97.0764,C5H9N2,
+110,Loss,46.0053,CH2O2,Mass2Motif related to combined loss of H2O and CO ? indicative for free carboxylic acid group (COOH) ? generic substructure in amino acids and organic acids
+183,Loss,176.0323,C6H8O6,"Mass2Motif related to [glucoronate-H2O], indicative for glucuronidation"
+191,Loss,79.9568,SO3,"Mass2Motif related to sulfation (loss of SO3), indicative for sulfonated metabolites"
+49,"Frag,","132.1015,","C6H14NO2,",Mass2Motif related to dihydroxylated alkylamine substructure ? e.g. substructure of triethanolamine
+,"Frag,",114.0911,C6H12NO,
+243,Loss,132.0419,C5H8O4,Mass2Motif related to pentose loss
+221,"Frag,","132.0769,","C4H10N2O3,",Creatine related Mass2Motif
+,Frag,90.0553,C3H8NO2,
+39,"Frag,","89.0600,","C4H9O2,",Polyethylene glycol related Mass2Motif ? C6H13O3 fragment and other fragments present in MzCloud in PEG related compounds
+,"Frag,","133.0862,","C6H13O3,",
+,"Frag,","55.0546,","C4H7,",
+,Frag,107.0708,C4H11O3,
+35,"Frag,","60.0447,","C2H6NO,",Serine related Mass2Motif
+,"Frag,","106.0496,","C3H8NO3,",
+,Frag,88.039,C3H6NO2,
+182,Frag,"145.0499,","C6H9O4,",Hexose related Mass2Motif
+,Frag,"61.0286,","C2H5O2,",
+,Frag,"163.0606,","C6H11O5,",
+,Frag,"97.0283,","C5H5O2,",
+,Frag,"91.0392,","C3H7O3,",
+,Frag,"127.0386,","C6H7O3,",
+,Frag,"73.0284,","C3H5O2,",
+,Frag,"69.0336,","C4H5O,",
+,Frag,"81.0334,","C5H5O,",
+,Frag,57.0338,C3H5O,
+299,"Frag,","137.0460,","C5H5N4O,",Hypoxanthine related Mass2Motif
+,Frag,119.0351,C5H3N4,
+204,"Frag,","71.0606,","C3H7N2,",Dimethylated guanidino group related Mass2Motif
+,"Frag,","57.0450,","C2H5N2,",
+,"Frag,","88.0868,","C3H10N3,",
+,"Frag,","158.1293,","C7H16N3O,",
+,"Loss,","133.0852,","C4H11N3O2,",
+,Loss,87.0791,C3H9N3,
+19,"Frag,","74.0060,","C2H4NS,",Cystine related Mass2Motif
+,"Frag,","120.0117,","C3H6NO2S,",
+,Frag,74.0236,C2H4NO2,
+127,"Frag,","60.0447,","C2H6NO,",N-acetylneuraminic acid related Mass2Motif ? N-acetylneuraminic acid fragments found in MzCloud ? and match to NIST_msms
+,"Frag,","96.0441,","C5H6NO,",
+,"Frag,","68.0498,","C4H6N,",
+,"Frag,","53.0389,","C4H5,",
+,"Frag,","55.0182,","C3H3O,",
+,"Frag,","121.0282,","C7H5O2,",
+,"Frag,","167.0343,","C8H7O4,",
+,"Frag,","274.0919,","C11H16NO7,",
+,Frag,197.0442,C9H9O5,
+194,"Frag,","53.0389,","C4H5,","[C=O]-NH-CH2-phenyl substructure related Mass2Motif ? i.e., present in benzylurea"
+,"Frag,","134.0598,","C8H8NO,",
+,"Frag,","168.0648,","C8H10NO3,",
+,Frag,106.0649,C7H8N,
+55,"Frag,","121.0282,","C7H5O2,","Hydroxybenzoyl related Mass2Motif ? i.e., aromatic substructure of 2-hydroxybenzoylglycine (2-hydroxyhippuric acid)"
+,Frag,65.0387,C5H5,
+51,"Loss,","89.0475,","C3H7NO2,",Mass2Motif related to loss of alanine and subsequently a carboxylic acid (CHOOH) group
+,Loss,135.0529,C4H9NO4,
+1,"Frag,","160.0976,","C7H14NO3,",C7H14NO3 (with fragments of C4H10NO and C3H8N) related Mass2Motif
+,"Frag,",88.0758,C4H10NO,
+123,"Frag,","134.0481,","C7H6N2O,","Mass2Motif related to C8H8N2O substructure ? likely related to benzimidazol, but cannot confirm with fragments"
+,"Frag,","106.0526,","C6H6N2,",
+,"Frag,","106.0649,","C7H8N,",
+,"Frag,","149.0719,","C8H9N2O,",
+,Loss,148.0637,C8H8N2O,
+278,"Frag,","126.0220,","C2H8NO3S,",Mass2Motif related to taurine
+,"Frag,","108.0111,","C2H6NO2S,",
+,Loss,125.0142,C2H7NO3S,
+117,Loss,44.0261,C2H4O,Mass2Motif related to loss of ethenol ? likely from free alcohol chain in particular metabolites [depending on other atoms present]
+259,"Frag,","126.0918,","C7H12NO,",Mass2Motif related to 1-(3-aminopropyl)-2-pyrrolidone substructure
+,"Frag,","98.0599,","C5H8NO,",
+,"Frag,","69.0336,","C4H5O,",
+,Frag,143.1176,C7H15N2O,
+103,"Frag,","144.1018,","C7H14NO2,",Mass2Motif related to proline betaine substructure ? marker of intake for citrus fruit
+,"Frag,","84.0806,","C5H10N,",
+,Frag,98.0968,C6H12N2,
+224,"Frag,","58.9951,","C2H3S,",Mass2Motif related to C7H8NO3S substructure ? yet unknown but consistent pattern and conjugate with cysteine present
+,"Frag,","112.0217,","C5H6NS,",
+,"Frag,","186.0226,","C7H8NO3S,",
+,"Frag,","140.0167,","C6H6NOS,",
+,Frag,158.0274,C6H8NO2S,
+274,"Frag,","141.0183,","C6H5O4,",Mass2Motif related to ascorbic acid substructure as well as a loss of C6H11NO6 (possibly related to glucuronic acid amide) ? fragments for ascorbic acid in positive mode were found in Metlin database
+,"Loss,","193.0584,","C6H11NO6,",
+,"Frag,","95.0132,","C5H3O2,",
+,Frag,113.0236,C5H5O3,
+133,"Frag,","207.0909,","C14H11N2,",Sartan related Mass2Motif ? drug metabolites of losartan [and some ion products]
+,"Frag,","205.0762,","C14H9N2,",
+,"Frag,","180.0805,","C13H10N,",
+,"Frag,","190.0651,","C14H8N,",
+,"Frag,","165.0698,","C13H9,",
+,Frag,163.0546,C13H7,
+201,"Frag,","155.0260,","C8H8OCL,","Mass2Motif related to Clopidogrel ? contains mainly metabolites not modified on the COOH group, responsible for the C8H8OCl and C10H11NO2Cl fragments. Also contains ion products (fragmented isotopes)"
+,"Frag,","125.0150,","C7H6Cl,",
+,"Frag,","91.0540,","C7H7,",
+,"Frag,","53.0389,","C4H5,",
+,"Frag,","105.0335,","C7H5O,",
+,"Frag,","212.0483,","C10H11NO2Cl,",
+,"Frag,","65.0387,","C5H5,",
+,"Frag,","183.0201,","C9H8O2Cl,",
+,"Frag,","184.0532,","C9H11NOCl,",
+,"Frag,","152.0257,","C8H7NCl,",
+,Frag,138.9947,C7H4OCl,
+165,"Frag,","141.0104,","C7H6OCl,",Mass2Motif related to Clopidogrel ? contains many ion products (fragmented isotope peaks) and metabolites with oxidized thiophene ring (which is responsible for C6H8OS loss)
+,"Frag,","125.0150,","C7H6Cl,",
+,"Frag,","169.0049,","C8H6O2Cl,",
+,"Frag,","53.0389,","C4H5,",
+,"Frag,","198.0316,","C9H9NO2Cl,",
+,"Frag,","113.0157,","C6H6Cl,",
+,"Frag,","152.0257,","C8H7NCl,",
+,"Frag,","170.0369,","C8H9NOCl,",
+,"Frag,","140.0262,","C7H7NCl,",
+,Loss,128.0301,C6H8OS,
+236,"Frag,","125.0150,","C7H6Cl,",Mass2Motif related to Clopidogrel ? mainly COOH metabolites with intact thiophene ring (which is responsible for the C6H6S loss)
+,"Frag,","152.0257,","C8H7NCl,",
+,"Frag,","141.0104,","C7H6OCl,",
+,"Frag,","140.0262,","C7H7NCl,",
+,"Frag,","113.0157,","C6H6Cl,",
+,"Frag,","53.0389,","C4H5,",
+,"Frag,","169.0049,","C8H6O2Cl,",
+,"Frag,","198.0316,","C9H9NO2Cl,",
+,Loss,110.0191,C6H6S,
+193,"Frag,","110.0597,","C6H8NO,",Mass2Motif related to Paracetamol ? many ion products associated to this topic (abundant species ? two real paracetamol metabolites)
+,"Frag,","65.0387,","C5H5,",
+,Frag,92.0494,C6H6N,
+139,"Frag,","140.0166,","C6H6NOS,",Mass2Motif related to paracetamol-mercapturates
+,"Frag,","208.0436,","C10H10NO2S,",
+,"Frag,","96.0441,","C5H6NO,",
+,"Frag,","166.0315,","C8H8NOS,",
+,"Frag,","112.0217,","C5H6NS,",
+,"Frag,","149.0063,","C8H5SO,",
+,Frag,121.0104,C7H5S,
+155,"Loss,","75.0684,","C3H9NO,",Mass2Motif related to Trimethylamine oxide substructure ? trimethylamine oxide can be present in urine (e.g. carnitine derived)
+,"Frag,","76.0756,","C3H10NO,",
+,Frag,59.0733,C3H9N,
+297,"Frag,","100.0762,","C5H10NO,","Mass2Motif related to acetylamine substructure ? e.g., as in N1-acetylspermidine; the C5H10NO is a ring fragment including the N-acetyl group"
+,Frag,72.0446,C3H6NO,

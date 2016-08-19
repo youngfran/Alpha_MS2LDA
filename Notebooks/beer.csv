@@ -1,0 +1,277 @@
+Degree,Frag/,m/z,EF,Struct. ID /
+228,Frag,70.0652,C4H8N,Small nitrogen containing fragment ion ? often proline or ornithine derived ? most abundant fragment in all four beers
+142,Loss,18.008,H2O,Water loss  - indicative of a free hydroxyl group) ? often seen in sugary structures
+80,Loss,46.0053,CH2O2,Combined loss of H2O and CO ? indicative for free carboxylic acid group (COOH) ? generic substructure in amino acids and organic acids
+49,"Frag,","72.0807,","C4H10N,",Aliphatic amine (NH3 loss indicates free NH2 group coupled to aliphatic chain)
+,Frag,55.0546,C4H7,
+25,Loss,162.0531,C5H10O5,Loss of [hexose-H2O] ? indication of hexose conjugation (for example glucose)
+-,Loss,74.0002,C2H3O2,"Free CO2 + CO loss, loss part of CH2O2-loss M2M for other beers"
+38,"Frag,","86.0965,","C5H12N,",Leucine related substructure (mzCloud) ? prevalent in Beer 2
+,Frag,132.1016,C6H14NO2,
+31,Frag,98.9839,H4O4P,Fragment ion indicative for conjugation of a phosphate group  (H4O4P)
+98,"Frag,","85.0283,","C4H5O2,",Two small fragments with CO loss in between. Unclear if it points to a specific substructure.
+,Frag,57.0332,C3H5O,
+27,"Loss,","179.0791,","C6H13NO5,",Losses indicative of a hexose with NH2 group ? EF fits
+,Loss,197.0899,C6H15NO6,
+22,"Frag,","98.0600,","C5H8NO,",Fragment ions possibly indicative for N-Methyl-oxo-pyrrolidinecarboxylic acid like structure (loss of free carboxyl group)
+,Frag,144.0658,C6H10NO3,
+114,"Frag,","84.0442,","C4H6NO,",Fragment ions indicative for pyroglutamic acid (pyroglutamate) or lysine (MzCloud) ? structure can be formed from glutamic acid (glutamate) in the mass spectrometer as well.
+,"Frag,","56.0498,","C3H6N, ",
+,"Frag,","147.0760,","C5H11N2O3,",
+,Frag,130.0505,C5H8NO3,
+41,Loss,17.0247,NH3,Amine loss - Indicative for free NH2 group in fragmented molecule
+44,Loss,36.0183,H4O2,"Double water loss, i.e., 2*H20 ? Generic feature for metabolites containing several free OH groups attached to a aliphatic chain, like sugars."
+19,"Frag,","116.0712,","C5H10NO2,",Fragment and loss of [proline-H2O] - indicative for conjugated proline ? EF fits
+,Loss,115.063,C5H9NO2,
+29,Loss,60.021,C2H4O2,Loss possibly indicative of carboxylic acid group with 1-carbon attached.
+,Loss,18.0103,H2O,
+15,"Frag,","83.0604,","C4H7N2,","Imidazole group linked to a carboxylgroup through one CH2 group, i.e., like in imidazole acetic acid - Prevalent in Beer1"
+,"Frag,","56.0498,","C3H6N,",
+,Frag,129.0658,C5H9N2O2,
+30,"Frag,","109.0288,","C6H5O2,",Fragments indicative for dihydroxylated benzene ring substructure (MzCloud) ? C6H5O2 fragment corresponds to positively charged fragment with two hydroxyl groups.
+,"Frag,","81.0333,","C5H5O,",
+,Frag,53.0888,C4H5,
+39,"Frag,","105.0702,","C8H9,","Alkyl aromatic substructure ? indicative for aromatic ring with 2-carbon alkyl chain attached, i.e., phenylethene fragment from ethylbenzene as a result of the fragmentation process."
+,"Frag,","79.0541,","C6H7,",
+,"Frag,","91.0541,","C7H7,",
+,Frag,"53.0388,",C4H5,
+48,"Frag,","84.0808,","C5H10N,","Fragment ions indicative for pipecolic acid (pipecolate) (MzCloud) - Quite prevalent, especially in Beer2"
+,"Frag,","56.0498,","C3H6N,",
+,Frag,67.0546,C5H7,
+43,"Frag,","58.0655,","C3H8N,","Fragment ions indicative for trimethylated amine connected to a carboxylic acid group, i.e., like in betaine (MzCloud)"
+,"Frag,","118.0861,","C5H12NO2,",
+,Frag,59.0733,C3H9N,
+,Frag,59.0732,C3H9N,
+17,"Frag,","112.0511,","C4H6N3O,","Fragment ions indicative for cytosine, and a loss of conjugated deoxyribose ? possibly combined due to many spectra that combine these two substructures. Loss of NH2 group is likely from remaining fragment after loss of deoxyribose. ?"
+,"Frag,","95.0239,","C4H3N2O,",Quite prevalent in Beer1
+,"Loss,","132.0419,","C5H8O4,",
+,Loss,149.0685,C5H11NO4,
+25,"Frag,","114.05601,","C4H8NO,",Possibly suggests 2-pyyrolidine substructure ? Mass2Motif not consistent over the four beers.
+,"Frag,","68.0498,","C4H6N,",
+,"Frag,","69.0337,","C4H5O,",
+,Frag,53.0026,C3HO,
+5,"Frag,","71.0687,","n/a,",C13 isotope peaks of proline (abundant ions taken for fragmentation)
+,Frag,117.074,n/a,
+-,"Loss,","88.0159,","C3H4O3,",Combination of small losses ? free carboxylgroup and acetyl group loss + loss of NH2 group in some cases
+,"Loss,","42.0107,","CH2O2,",
+,Loss,105.0425,C3H7NO3,
+14,"Loss,","60.0322,","CH4N2O,",Fragment and losses possibly indicative for guanidino group (CH6N3)
+,"Loss,","59.0483,","CH5N3,",
+,Frag,60.0559,CH6N3,
+18,"Frag,","181.0970,","C9H13N2O2,",Unclear yet what these fragments relate to.
+,"Frag,","209.0925,","C10H13N2O3,",
+,Frag,125.0708,C6H9N2O,
+15,"Frag,","96.0441,","C5H6NO,",Possibly suggests 2-pyridone/ol substructure
+,Frag,124.0398,C6H6NO2,
+19,"Frag,","136.0629,","C5H6N5,",Fragments indicative adenine (C5H6N5) substructure ? most prevalent in Beer3
+,Frag,119.0351,C5H3N4,
+30,"Loss,","180.0632,","C6H12O6,",Oxygen-rich losses and fragments also occurring in hexose spectra ? related to M2M 211 (hexose [glucose] conjugatation) ? possibly hydrated-hexose loss?
+,"Loss,","198.0738,","C6H14O7,",
+,"Frag,","85.0283,","C4H5O2,",
+,"Frag,","69.0337,","C4H5O,",
+,Frag,81.0334,C5H5O,
+27,"Frag,","91.0541,","C7H7,",Fragments indicative for cinnamic acid (cinnamate) substructure (MzCloud)
+,"Frag,","119.0488,","C8H7O,",
+,"Frag,","147.0437,","C9H7O2,",
+,Frag,65.0388,C5H5,
+24,"Loss,","78.0316,","C2H6O3,",Combinations of small generic losses like CH2O2 + CH4O = C2H6O3
+,"Loss,","120.0420,","C4H8O4,",
+,"Loss,","108.0421,","C3H8O4,",
+,Loss,66.032,CH6O3,
+25,"Frag,","110.0718,","C5H8N3,",Fragments indicative for histidine (C6H10N3O2) substructure (MzCloud)
+,"Frag,","156.0769,","C6H10N3O2,",
+,"Frag,","93.0450,","C5H5N2,",
+,Frag,95.0608,C5H7N2,
+17,"Loss,","59.0370,","C2H5NO,",Combinations of small generic losses like C2H2O + NH3 = C2H5NO
+,"Loss,","89.0476,","C3H7NO2,",
+,"Loss,","42.0107,","CH2O,",
+,Loss,87.032,C4H9NO,
+10,"Frag,","129.0658,","C5H9N2O2,",Fragment ions indicative for glutamine (C5H11N2O3) substructure
+,Frag,147.0759,C5H11N2O3,
+26,"Frag,","120.0808,","C8H10N,",Fragments indicative for [phenylalanine-CHOOH] based substructure
+,"Frag,","103.0546,","C8H7,",
+,Frag,91.0541,C7H7,
+13,"Frag,","152.0560,","C5H6N5O,",Fragment ions indicative for guanine (C5H5N5O) based substructure
+,"Frag,","153.0407,","C5H5N4O2,",
+,"Frag,","110.0346,","C4H4N3O,",
+,"Frag,","135.0300,","C5H3N4O,",
+,Frag,55.0295,C2H3N2,
+5,"Frag,","80.0495,","C5H6N,",Unclear what these fragments relate to.
+,"Frag,","164.0346,","C8H6NO3,",
+,"Frag,","136.0397,","C7H6NO2,",
+,"Frag,","53.0389,","C4H5,",
+,Frag,65.0388,C5H5,
+10,"Frag,","177.0547,","C10H9O3,",Fragments indicative for ferulic acid based substructure (MzCloud)
+,"Frag,","145.0284,","C9H5O2,",
+,"Frag,","89.0386,","C9H7,",
+,"Frag,","117.0331,","C8H5O,",
+,Frag,149.0599,C9H9O2,
+55,"Frag,","121.0649,","C8H9O,",Fragments indicative for ethylphenol substructure (i.e. resulting from Tyramine ? MzCloud)
+,"Frag,","103.0545,","C8H7,",
+,"Frag,","91.0541,","C7H7,",
+,"Frag,","53.0389,","C4H5,",
+,Frag,93.0698,C7H9,
+39,"Frag,","69.0337,","C4H5O,",Fragment ions possibly indicative for ribose substructure (MzCloud)
+,"Frag,","57.0337,","C3H5O,",
+,Frag,73.0285,C3H5O2,
+25,"Frag,","104.1070,","C5H14NO,",Possibly suggests 5-aminopentanol substructure
+,Frag,60.081,C3H10N,
+5,"Frag,","150.0557,","C8H8NO2,","Possibly suggests methoxy-1H-indole-2,3-dione (methoxy-isatin) substructure"
+,"Frag,","178.0501,","C9H8NO3,",
+,"Frag,","95.0494,","C6H7O,",
+,Frag,135.031,C7H5NO2,
+15,"Frag,","118.0654,","C8H8N,","Fragments indicative of [tryptophan-NH3] related substructure (C8H8N is the basic indole skeleton, a fused benzene and 5 membered N-containing ring)"
+,"Frag,","117.0571,","C8H7N,",
+,"Frag,","91.0541,","C7H7,",
+,"Frag,",130.0645,"C9H8N,",
+,Frag,"188.0706,",C11H10NO2,
+-,"Loss,","36.0183,","H4O2,",Possibly suggests iminosugar like substructure. Losses related to sugar (polyhydroxylated structure)
+,"Loss,",162.0525,"C6H10O5,",
+,"Loss,","138.0526,","C7H8NO2,",
+,"Loss,","196.0583,","C6H12O7,",
+,"Loss,","150.0526,","C5H10O5,",
+,"Loss,","64.0150,","CH4O3,",
+,"Loss,","184.0578,","C5H12O7,",
+,"Frag,","112.0398,","C5H6NO2,",
+,"Frag,",87.0316,C3H5NO2,
+8,"Frag,","131.1292,","C5H15N4,","Possibly suggests agmatine based substructure (C5H15N4), with unknown conjugation?."
+,"Frag,","72.0809,","C4H10N,",
+,"Frag,","114.1028,","C5H12N3,",
+,"Frag,","98.0600,","C5H8NO,",
+,"Frag,","60.0559,","CH6N3,",
+,"Frag,","157.1084,","C6H13N4O,",
+,"Frag,","278.0554,","C17H14O4,",
+,Frag,207.0796,C15H11O,
+7,"Frag,","258.1335,","C12H20NO5,","Possibly suggests iminosugar like substructure. Fragments have losses (H2O, CO) related to sugar (polyhydroxylated structure)"
+,"Frag,","276.1435,","C12H22NO6,",
+,"Frag,","230.1398,","C11H20NO4,",
+,Frag,212.1277,C11H18NO3,
+58,"Frag,","85.0283,","C4H5O2,","Fragments indicative of a [hexose-H2O] substructure ? i.e., indicative for a hexose (like glucose) conjugation (MzCloud)"
+,"Frag,","145.0550,","C6H9O4,",
+,"Frag,","127.0387,","C6H7O3,",
+,"Frag,","97.0284,","C5H5O2,",
+,"Frag,","69.0337,","C4H4O,",
+,Frag,163.0605,C6H11O5,
+46,"Frag,","67.0545,","C5H7,",Possibly suggests alkylbenzene substructure.
+,"Frag,","81.0700,","C6H9,",
+,"Frag,","55.0540,","C4H7,",
+,"Frag,","149.1325,",C11H17,
+,"Frag,","277.2173,","C18H29O2,",
+,"Frag,","295.2288,","C18H31O3,",
+,"Frag,","93.0698,","C7H9,",
+,"Frag,","71.0857,","C5H11,",
+,"Frag,","141.1273,","C9H17O,",
+,Frag,169.1226,C10H17O2,
+8,"Frag,","146.0811,","C6H12NO3,",Possibly suggests 4-aminooxane-4-carboxylic acid like substructure?
+,"Frag,","128.0703,","C6H10NO2,",
+,"Frag,","81.0334,","C5H5O,",
+,Frag,83.049,C3H7O,
+12,"Frag,","86.0314,",N/A,Isotope M2M of 111 (glycoside/hexoside related)
+,"Frag,","146.0528,",N/A,
+,Frag,128.0428,N/A,
+80,Frag,91.0541,C7H7,Small abundant and generic aromatic fragment found across several mass patterns.
+72,"Frag,","69.0701,","C5H9,","Two small fragments, unclear if they represent a substructure"
+,Frag,53.0026,C3HO,
+-,Loss,35.0343,H5NO,Combined (sequential) H2O and NH3 loss
+17,"Frag,","152.0703,","C8H10NO2,",Unclear what these fragments relate to.
+,Frag,134.06,C8H8NO,
+"68,","Frag,","57.0701,","C4H9,",Unclear yet what these fragments relate to.
+,"Frag,","85.0648,","C5H9O,",
+13,"Frag,",67.0546,"C5H7,",
+,Frag,53.0026,C3HO,
+18,"Loss,","64.0161,","CH4O3,","Combination of small losses (CO2, H2O, etc.) ? Unclear if they relate to a substructure loss."
+,Loss,92.0108,C2H4O4,
+-,"Frag,","60.0448,","C2H6NO,",Fragments (and loss) indicative for serine substructure (MzCloud) -
+,"Frag,","106.0497,","C3H8NO3,",Present in Beer 2 & Beer 3
+,"Frag,",88.0392,"C3H6NO2,",
+,Loss,115.0268,C4H5NO3,
+-,"Loss,","143.0580,","C6H9NO3,",Unclear what these fragments relate to.
+,Loss,99.0682,C5H9NO,
+-,"Frag,","87.0439,","C4H7O2,",Fragments indicative for y-aminobutyric acid (amimobutyrate) substructure (MzCloud) ? present in Beer 2 & Beer 3 ? in beer 3 mainly based on C4H7O2 fragment.
+,"Loss,","86.0366,","C4H6O2,",
+,"Frag,","104.0711,","C4H10NO2,",
+,Frag,69.0337,C4H5O,
+32,"Loss,","27.9941,","CO,","Combination of small losses (CO2, H2O, etc.) ? Unclear if they relate to a substructure loss."
+,"Loss,",30.01,CH2O,
+,"Loss,","55.9897,","C2O2,",
+,Loss,54.0102,C3H2O,
+53,"Frag,","111.0443,","C6H7O2,","Possibly related to 1,4-Cyclohex-2-enedione substructure ? double CO loss between fragments. Could be alkaloid fragments as well."
+,"Frag,","83.0490,","C5H7O,",
+,Frag,55.0547,C4H7,
+15,"Frag,","95.0607,","C5H7N2,",Unclear what these fragments relate to. Possibly small ring structure (CHN loss)
+,Frag,68.0498,C4H6N,
+-,"Frag,","128.1074,",C7H14NO, Unclear what these fragments relate to.
+,"Loss,","60.0576,","C2H4O2,",
+,"Loss,","42.0470,","C2H2O,",
+,Frag,110.097,C7H12N,
+5,"Frag,","68.9972,","C3HO2,",Fragment ions indicative for aconitic acid substructure (C3HO2 fragment is quite specific)
+,"Frag,","111.0076,","C5H3O3,",
+,"Frag,","129.0186,","C5H5O4,",
+,Frag,157.0131,C6H5O5,
+10,"Loss,","53.0476,","NH7O2,","Combination of small losses (NH3, H2O) ? Unclear if they relate to a substructure loss."
+,Loss,71.0583,NH9O3,
+-,"Frag,","180.1013,","C10H14NO3,",Unclear what these fragments relate to.
+,Frag,162.0915,C10H12NO2,
+11,"Frag,","138.0545,","C7H8NO2,",Unclear yet what these fragments relate to.
+,"Frag,","140.1065,","C7H10NO2,",
+,"Frag,","186.0758,","C8H12NO4,",
+,Frag,168.065,C8H10NO3,
+10,"Frag,","136.0760,","C8H10NO,",
+,"Frag,","107.0493,","C7H7O,",Fragments indicative for tyrosine substructure (MzCloud)
+,"Frag,","91.0543,","C7H7,",
+,"Frag,","95.0494,","C6H7O,",
+,"Frag,","123.0447,","C7H7O2,",
+,"Frag,","119.0488,","C8H7O,",
+,Frag,182.0822,C9H12NO3,
+11,"Frag,","260.1117,","C11H18NO6,",Unclear yet what these fragments relate to.
+,"Frag,","128.0704,","C6H10NO2,",
+,"Frag,","242.1011,","C11H16NO5,",
+,Frag,100.0754,C5H10NO,
+5,"Frag,","130.0506,","C5H8NO3,",Unclear yet what these fragments relate to.
+,"Frag,","97.0284,","C5H5O2,",
+,"Frag,","238.0714,","C11H12NO5,",
+,"Frag,","226.0718,","C10H12NO5,",
+,Frag,274.092,C11H16NO7,
+14,"Frag,","73.0285,","C3H5O2,",Unclear yet ? possibly related to methylsuccinic acid?.
+,"Frag,","133.0499,","C5H9O4,",
+,"Frag,","57.0337,","C3H5O,",
+,Frag,115.0391,C5H7O3,
+-,Loss,42.0107,CH2O2,N/O-Acetylation (Beer 3)
+-,"Loss,","63.0319,","CH5NO2,","Combination of small losses (i.e., NH3 and CH2O2)"
+,"Loss,","45.0578,","C2H7N,",
+,Loss,91.0268,C2H5NO3,
+14,"Frag,","74.0598,","C3H8NO,",Unclear if fragments relate to a specific substructure.
+,Frag,56.0497,C3H6N,
+12,"Frag,","55.0547,","C4H7,",Unclear if fragments relate to a specific substructure. H2O loss between fragments.
+,Frag,73.0647,C4H9O,
+15,"Frag,","89.0600,","C4H9O2,",Unclear yet what these fragments relate to.
+,"Frag,","133.0863,","C6H13O3,",
+,"Frag,","177.1128,","C8H17O4,",
+,Frag,111.0443,C6H7O2,
+-,"Frag,","74.0235,","C2H4NO2,",Fragments indicative for asparagine substructure (MzCloud) ? prevalent in Beer 3
+,"Frag,","88.0392,","C3H6NO2,",
+,"Frag,","70.0290,","C3H4NO,",
+,"Frag,","87.0554,","C3H7N2O,",
+,"Frag,","133.0615,","C4H9N2O3,",
+,Frag,116.0344,C4H6NO3,
+34,"Frag,","108.0443,","C6H6NO,",Fragments possibly suggest benzene ring substituted with one hydroxyl and one NH2 group (fragments point to orientation from 3-hydroxyanthranilic acid ? i.e. MzCloud) ? prevalent in Beer 2 and 4
+,"Frag,","80.0495,","C5H6N,",
+,Frag,53.0389,C4H5,
+6,"Frag,","126.0665,","C5H8N3O,",Fragment ions indicative for 5-methylcytosine substructure (MzCloud) ? prevalent in Beer 2
+,"Frag,","109.03976,","C5H5N2O,",
+,Frag,108.056,C5H6N3,
+17,"Loss,","59.0370,","C2H5NO,",Fragment ions indicative for N-acetylputrescine substructure (MzCloud)
+,"Frag,","114.0912,","C6H12NO,",
+,"Frag,","72.0447,","C3H6NO,",
+,Frag,60.0448,C2H6NO,
+36,Loss,132.0421,C5H8O4,"[Ribose (pentose, C5-sugar)-H2O] related loss ?  indicative for conjugated ribose sugar - EF fits"
+12,"Frag,","206.1024,","C8H16NO5,",Unclear yet what these fragments relate to.
+,"Frag,","86.0602,","C4H8NO,",
+,Frag,74.06,C3H8NO,
+18,"Loss,","144.04192,","C6H8O4,",Unclear yet what these losses relate to.
+,"Loss,","190.0474,","C7H10O6,",
+,Loss,160.037,C6H8O5,
+14,"Frag,","126.0600,","C7H8NO,",Unclear yet what these fragments relate to.
+,Frag,94.0648,C6H8N,
+18,"Frag,","95.0494,","C6H7O,",Unclear yet what these fragments relate to.
+,Frag,137.06,C8H9O2,
